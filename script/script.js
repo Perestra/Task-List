@@ -28,8 +28,28 @@ function crudActions(value) {
     liTag.appendChild(editButton)
     liTag.appendChild(deleteButton)
     ulTag.appendChild(liTag)
-    
-    
+
+    editButton.addEventListener('click', () => {
+        h2Tag.toggleAttribute('contenteditable')
+        if(h2Tag.hasAttribute('contenteditable')) {
+            editButton.innerHTML = '<span class="material-symbols-outlined">done</span>'
+        }else {
+            editButton.innerHTML = '<span class="material-symbols-outlined">edit</span>'
+        }
+    })
+
+    deleteButton.addEventListener('click', () => {
+        liTag.remove()
+    })
+
+    inputCheckBox.addEventListener('click', () => {
+        if(inputCheckBox.checked) {
+            h2Tag.style.textDecorationLine = 'line-through'
+        }else {
+            h2Tag.style.removeProperty('text-decoration-line')
+        }
+    })
 
 }
+
 
