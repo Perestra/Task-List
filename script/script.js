@@ -52,4 +52,9 @@ function crudActions(value) {
 
 }
 
+formTag.onsubmit = e => {
+    e.preventDefault()
 
+    const inputValue = textTypedInput.value
+    crudActions(inputValue)
+}
