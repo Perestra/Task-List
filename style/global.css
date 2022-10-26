@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+@import url(/style/header.css);
+@import url(/style/section.css);
+
+:root {
+    --firstBackground: linear-gradient(112.68deg, #1E5E73 0%, #082A34 76.37%);;
+    --secondBackground: #222730;
+    --secondBackgroundShadow: 0px 0px 20px 11px rgba(0, 0, 0, 0.25);
+    --inputBackground: #171921;
+    --buttonBackground: #D9D9D9;
+    --addIcon: #000;
+    --editIcon: #316DE1;
+    --deleteIcon: #950000;
+    --doneIcon: #0A7E00;
+    --titleColor: rgba(255, 255, 255, 0.3);
+    --textColor: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    background: var(--firstBackground);
+}
