@@ -12,7 +12,7 @@
     --editIcon: #316DE1;
     --deleteIcon: #950000;
     --doneIcon: #0A7E00;
-    --titleColor: rgba(255, 255, 255, 0.3);
+    --titleColor: rgba(255, 255, 255, 0.2);
     --textColor: #FFFFFF;
 }
 
@@ -25,5 +25,49 @@ html {
     font-size: 62.5%;
 }
 body {
-    background: var(--firstBackground);
+    background: grey;
+}
+main {
+    max-width: 50%;
+    height: 89vh;
+
+    margin: 5rem auto;
+    padding: 6rem 3rem 2rem;
+    border-radius: 3rem;
+
+    background-color: var(--secondBackground);
+    box-shadow: var(--secondBackgroundShadow);
+}
+h1 {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    font-size: 4.2rem;
+    color: var(--titleColor);
+    letter-spacing: 0.1em;
+}
+h2 {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: var(--textColor);
+    letter-spacing: 0.1em;
+}
+p {
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: var(--textColor);
+    letter-spacing: 0.1em;
+}
+button {
+    width: 4.5rem;
+    height: 4rem;
+
+    background: var(--buttonBackground);
+    border-radius: 1rem;
+
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
