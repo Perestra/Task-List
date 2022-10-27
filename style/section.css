@@ -1,0 +1,60 @@
+
+
+.container-list {
+    margin: 7rem 0 2.5rem;
+}
+
+
+.items-list {
+    width: 100%;
+    height: 46rem;
+    
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 1.2rem;
+    row-gap: 2.5rem;
+}
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 5rem;
+
+    background: var(--inputBackground);
+    border-radius: 1rem;
+    padding: 0 1.2rem;
+}
+.item-name {
+    display: flex;
+    align-items: flex-start;
+
+    column-gap: 1.2rem;
+}
+.input-checkbox {
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+
+.fa-solid {
+    font-size: 1.6rem;
+}
+.fa-pen {
+    color: var(--editIcon);
+}
+.fa-trash-can {
+    color: var(--deleteIcon);
+}
+.fa-check {
+    font-size: 2rem;
+    color: var(--doneIcon);
+}
+.item-button {
+    display: flex;
+    align-items: center;
+
+    column-gap: 1.2rem;
+}
