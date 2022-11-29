@@ -4,24 +4,6 @@ const formTag = document.querySelector('form')
 const ulTag = document.querySelector('.items-list')
 const taskList = JSON.parse(localStorage.getItem('Task')) || []
 
-
-const createEditButton = () => {
-    const editButton = document.createElement('button')
-    editButton.classList.add('edit-button')
-    editButton.innerHTML = '<i class="fa-solid fa-pen"></i>'
-
-    return editButton
-}
-
-const createDeleteButton = () => {
-    const deleteButton = document.createElement('button')
-    deleteButton.classList.add('delete-button')
-    deleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>'
-
-    return deleteButton
-}
-
-
 taskList.forEach(element => {
     createTask(element) 
     console.log(element)
@@ -39,8 +21,9 @@ formTag.onsubmit = e => {
     if(findTask) {
         Task.id = findTask.id
         updateTask(Task)
+        taskList[taskList.findIndex(elem => elem.id === findTask.id)] = Task
     }else {
-        Task.id = taskList.length
+        Task.id = taskList[taskList.length - 1] ? (taskList[taskList.length-1]).id + 1 : 0
         createTask(Task)
         taskList.push(Task)
     }
@@ -49,8 +32,6 @@ formTag.onsubmit = e => {
     textTypedInput.value = ''
 
 }
-
-
 
 function createTask(task) {
    
@@ -71,39 +52,50 @@ function createTask(task) {
     const itemButton = document.createElement('div')
     itemButton.classList.add('item-button')
 
-    liTag.appendChild(itemName)
     itemName.appendChild(inputCheckBox)
     itemName.appendChild(h2Tag)
+    liTag.appendChild(itemName)
+    itemButton.appendChild(createEditButton())
+    itemButton.appendChild(createDeleteButton(task.id))
     liTag.appendChild(itemButton)
-    // itemButton.appendChild(createEditButton)
-    // itemButton.appendChild(createDeleteButton)
     ulTag.appendChild(liTag)
 
     return liTag
 }
-
-
-
-
 function updateTask(task) {
     console.log(document.querySelector(`[data-id="${task.id}"]`))
     document.querySelector(`[data-id="${task.id}"]`)
 
 }
 
-// deleteButton.addEventListener('click', () => {
-//     liTag.remove()
-// })
+function createEditButton() {
+    const editButton = document.createElement('button')
+    editButton.classList.add('edit-button')
 
+    const penIcon = document.createElement('i')
+    penIcon.classList.add('fa-pen', 'fa-solid')
 
-// editButton.addEventListener('click', () => {
-//     h2Tag.toggleAttribute('contenteditable')
-//     if(h2Tag.hasAttribute('contenteditable')) {
-//         editButton.innerHTML = '<i class="fa-solid fa-check"></i>'
-//     }else {
-//         editButton.innerHTML = '<i class="fa-solid fa-pen"></i>'
-//     }
-// })
+    editButton.appendChild(penIcon)
+
+    return editButton
+}
+
+function createDeleteButton(id) {
+    const deleteButton = document.createElement('button')
+    deleteButton.classList.add('delete-button')
+    deleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>'
+
+    deleteButton.addEventListener('click', function() {
+        deleteTask(this.parentNode.parentNode, id)
+    } )
+
+    return deleteButton
+}
+function deleteTask(task, id) {
+    task.remove()
+    taskList.splice(taskList.findIndex(elem => elem.id === id), 1)
+    localStorage.setItem('Task', JSON.stringify(taskList))
+}
 
 
 // inputCheckBox.addEventListener('click', () => {
