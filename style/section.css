@@ -1,16 +1,20 @@
 
 
 .container-list {
+    display: flex;
+    flex-direction: column;
+
     margin: 7rem 0 2.5rem;
 }
 
 
 .items-list {
     width: 100%;
-    height: 46rem;
+    height: auto;
     
     display: flex;
     flex-direction: column;
+    flex-basis: 45rem;
 
     margin-top: 1.2rem;
     row-gap: 2.5rem;
@@ -39,22 +43,24 @@
 }
 
 
+.no-task {
+    text-align: center;
+}
+.no-task i {
+    font-size: 3rem;
+    color: var(--textColor);
+
+    margin-bottom: 1.2rem;
+}
+.disable {
+    display: none;
+}
+
+
+
 .fa-solid {
     font-size: 1.6rem;
 }
-.fa-pen {
-    color: var(--editIcon);
-}
 .fa-trash-can {
     color: var(--deleteIcon);
-}
-.fa-check {
-    font-size: 2rem;
-    color: var(--doneIcon);
-}
-.item-button {
-    display: flex;
-    align-items: center;
-
-    column-gap: 1.2rem;
 }
