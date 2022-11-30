@@ -1,9 +1,20 @@
 
 
+const header = document.querySelector('.header')
 const formTag = document.querySelector('form')
 const ulTag = document.querySelector('.items-list')
 const taskList = JSON.parse(localStorage.getItem('Task')) || []
 
+function hasTask() {
+
+    const noTask = document.querySelector('.no-task')
+    
+    if(taskList.length >= 1) {
+        noTask.classList.add('disable')
+    } else {
+        noTask.classList.remove('disable')
+    }
+}
 
 taskList.forEach(element => {
     createTask(element) 
@@ -32,6 +43,8 @@ formTag.onsubmit = e => {
     localStorage.setItem('Task', JSON.stringify(taskList))
     textTypedInput.value = ''
 
+    hasTask()
+    
 }
 
 
@@ -106,4 +119,7 @@ function deleteTask(task, id) {
     task.remove()
     taskList.splice(taskList.findIndex(elem => elem.id === id), 1)
     localStorage.setItem('Task', JSON.stringify(taskList))
+    hasTask()
 }
+
+hasTask()
