@@ -3,7 +3,9 @@
 const header = document.querySelector('.header')
 const formTag = document.querySelector('form')
 const ulTag = document.querySelector('.items-list')
+
 const taskList = JSON.parse(localStorage.getItem('Task')) || []
+const textTypedInput = document.querySelector('.text-input')
 
 function hasTask() {
 
@@ -20,31 +22,32 @@ taskList.forEach(element => {
     createTask(element) 
 })
 
-
-formTag.onsubmit = e => {
-    e.preventDefault()
-    
-    const textTypedInput = document.querySelector('.text-input')
-    
+function checkTaskExists(Task) {
     const findTask = taskList.find( task => task.taskName ===  textTypedInput.value)
-    
-    const Task = {'taskName': textTypedInput.value}
 
     if(!findTask) {
         Task.id = taskList[taskList.length - 1] ? (taskList[taskList.length-1]).id + 1 : 0
         createTask(Task)
         taskList.push(Task)
+        localStorage.setItem('Task', JSON.stringify(taskList))
+        textTypedInput.value = ''
     }else {
         Task.id = findTask.id
         updateTask(Task)
         taskList[taskList.findIndex(elem => elem.id === findTask.id)] = Task
     }
+}
 
-    localStorage.setItem('Task', JSON.stringify(taskList))
-    textTypedInput.value = ''
 
-    hasTask()
+formTag.onsubmit = e => {
+    e.preventDefault()
     
+    const Task = {'taskName': textTypedInput.value}
+
+    if(textTypedInput.value.trim() !== '') {
+        checkTaskExists(Task)
+    }
+    hasTask()
 }
 
 
